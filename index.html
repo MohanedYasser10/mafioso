@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مافيوسوا</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button id="resetGameBtn" class="reset-btn">
+        <span class="reset-icon">🔄</span>
+        لعبة جديدة
+    </button>
+    <!-- شاشة البداية -->
+    <div id="startScreen" class="screen active">
+        <h1>مافيوسوا 👹</h1>
+        <button id="startGameBtn" class="btn">ابدأ اللعبة</button>
+    </div>
+
+    <!-- شاشة إدخال الأسماء -->
+    <div id="playersScreen" class="screen">
+        <h2>أدخل أسماء اللاعبين</h2>
+        <div id="playersList">
+            <div class="player-input">
+                <input type="text" placeholder="اسم اللاعب" class="player-name">
+            </div>
+        </div>
+        <button id="addPlayerBtn" class="btn">+ إضافة لاعب</button>
+        <button id="startWithPlayersBtn" class="btn" disabled>ابدأ اللعب</button>
+        <p class="hint">مطلوب 4 لاعبين على الأقل</p>
+    </div>
+
+    <!-- شاشة عرض الجريمة -->
+    <div id="crimeScreen" class="screen">
+        <h2>الجريمة</h2>
+        <div class="crime-details">
+            <h3 id="crimeTitle"></h3>
+            <p id="crimeScenario"></p>
+        </div>
+        <button id="showRevealInstructionsBtn" class="btn">التالي</button>
+    </div>
+
+    <!-- شاشة تعليمات كشف الأدوار -->
+    <div id="revealInstructionsScreen" class="screen">
+        <h2>🎭 كشف الأدوار</h2>
+        <div class="reveal-instructions">
+            <p class="highlight-text">كل لاعب سيقوم بالتعريف عن دوره بالترتيب</p>
+            <div id="playerOrder" class="player-order-list"></div>
+        </div>
+        <button id="startRevealingBtn" class="btn">بدء كشف الأدوار</button>
+    </div>
+
+    <!-- شاشة توزيع الأدوار -->
+    <div id="roleScreen" class="screen">
+        <h2>دورك في اللعبة</h2>
+        <div id="roleReveal" class="hidden">
+            <h3 id="playerRole"></h3>
+            <p id="mafiosaSecret" class="secret hidden">سرّك: أنت المافيوسوا 👹</p>
+        </div>
+        <button id="showRoleBtn" class="btn">شوف دورك</button>
+        <button id="nextPlayerBtn" class="btn hidden">تمام</button>
+        <p id="currentPlayer" class="player-indicator"></p>
+    </div>
+
+    <!-- شاشة النقاش -->
+    <div id="discussionScreen" class="screen">
+        <h2>وقت النقاش</h2>
+        <div class="timer">
+            <span id="timer">03:00</span>
+        </div>
+        <button id="startVotingBtn" class="btn">بدء التصويت</button>
+    </div>
+
+    <!-- شاشة التصويت -->
+    <div id="votingScreen" class="screen">
+        <h2>التصويت</h2>
+        <p id="votingPlayer" class="player-indicator"></p>
+        <div id="votingOptions"></div>
+        <button id="confirmVoteBtn" class="btn">تأكيد</button>
+    </div>
+
+    <!-- شاشة إعلان من خرج -->
+    <div id="eliminationScreen" class="screen">
+        <h2>نتيجة التصويت</h2>
+        <div class="eliminated-player-info">
+            <div id="eliminatedPlayerAnnouncement" class="announcement"></div>
+            <div id="eliminatedPlayerRole" class="role-reveal"></div>
+        </div>
+        <button id="continueAfterEliminationBtn" class="btn">استمرار</button>
+    </div>
+
+    <!-- شاشة النتيجة -->
+    <div id="resultScreen" class="screen">
+        <h2 id="gameResult"></h2>
+        <div id="rolesReveal"></div>
+        <div id="crimeSolution" class="crime-solution">
+            <h3>كيف تمت الجريمة؟ 🔍</h3>
+            <div class="solution-details">
+                <div id="crimePlan" class="solution-section"></div>
+                <div id="crimeExecution" class="solution-section"></div>
+            </div>
+        </div>
+        <div id="roundScore" class="score-info"></div>
+        <button id="nextRoundBtn" class="btn">الجولة التالية</button>
+        <button id="showFinalScoreBtn" class="btn">إنهاء المباراة</button>
+    </div>
+
+    <!-- شاشة النتيجة النهائية -->
+    <div id="finalScoreScreen" class="screen">
+        <h2>نتيجة المباراة 🏆</h2>
+        <div id="finalScoreBoard" class="score-board"></div>
+        <div id="winner" class="winner-announcement"></div>
+        <button id="playAgainBtn" class="btn">مباراة جديدة مع نفس اللاعبين</button>
+        <button id="newPlayersBtn" class="btn btn-outline">بدء لعبة جديدة بلاعبين جدد</button>
+    </div>
+
+    <!-- الأصوات -->
+    <audio id="crimeSound" src="assets/crime.mp3"></audio>
+    <audio id="victorySound" src="assets/victory.mp3"></audio>
+
+    <script src="js/data.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
